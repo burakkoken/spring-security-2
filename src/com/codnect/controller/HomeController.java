@@ -1,7 +1,10 @@
 package com.codnect.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Created by Burak Köken on 14.7.2017.
@@ -28,4 +31,10 @@ public class HomeController {
     public String showWelcomePage(){
         return "welcome";
     }
+
+    @RequestMapping("/notFoundPage")
+    public String showNotFoundPage(){
+        return "NotFoundPage";
+    }
+
 }
