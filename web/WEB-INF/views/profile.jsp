@@ -14,14 +14,7 @@
 </head>
 <body>
 
-    Username : <sec:authentication property="principal.username"/>
-
-    <form:form action="/logout" method="post">
-        <input type="submit" value="Oturumu Kapat"/>
-        <!--
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        -->
-    </form:form>
+    <h1>Profile Page</h1>
 
 
 </body>
