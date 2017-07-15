@@ -24,6 +24,11 @@
         <!-- access denied page -->
         <security:access-denied-handler error-page=""/>
 
+        <!-- remember me -->
+        <security:remember-me
+                user-service-ref="jdbcUserService"
+                remember-me-parameter="remember_me"
+        />
     </security:http>
 
 
@@ -35,7 +40,7 @@
 
     <security:authentication-manager>
         <security:authentication-provider>
-            <security:jdbc-user-service data-source-ref="beanDataSource"
+            <security:jdbc-user-service id="jdbcUserService" data-source-ref="beanDataSource"
                                         authorities-by-username-query="SELECT username, role FROM authorities WHERE BINARY username = ?"
                                         users-by-username-query="SELECT * FROM users WHERE BINARY username = ?"/>
             <!--

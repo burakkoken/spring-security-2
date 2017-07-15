@@ -18,6 +18,7 @@
         <br>
         <input type="password" name="password"/>
         <br>
+        <input type="checkbox" name="remember_me" checked="checked">
         <input type="submit" value="Oturum Aç"/>
     </form:form>
 
