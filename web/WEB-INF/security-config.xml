@@ -9,12 +9,37 @@
         <security:intercept-url pattern="/register" access="permitAll"/>
         <security:intercept-url pattern="/login" access="permitAll" />
         <security:intercept-url pattern="/welcome" access="isAuthenticated()"/>
-        <security:form-login/>
+        <security:intercept-url pattern="/settings/**" access="hasRole('ADMIN')"/>
+        <!-- enable auto form login page -->
+        <security:form-login
+                login-page="/login"
+                login-processing-url="/session"
+                username-parameter="username"
+                password-parameter="password"/>
+        <!-- logout urls -->
+        <security:logout logout-url="/logout" logout-success-url="/"/>
+        <!-- enable csrf protection -->
+        <security:csrf/>
+
+        <!-- access denied page -->
+        <security:access-denied-handler error-page=""/>
+
     </security:http>
+
+
+    <!--
+    <bean id="passwordEncoder"
+          class="org.springframework.security.crypto.password.StandardPasswordEncoder"
+    />
+    -->
 
     <security:authentication-manager>
         <security:authentication-provider>
-            <security:jdbc-user-service data-source-ref="beanDataSource"/>
+            <security:jdbc-user-service data-source-ref="beanDataSource"
+                                        authorities-by-username-query="SELECT username, role FROM authorities WHERE BINARY username = ?"
+                                        users-by-username-query="SELECT * FROM users WHERE BINARY username = ?"/>
+            <!--
+            <security:password-encoder ref="passwordEncoder"/>-->
         </security:authentication-provider>
     </security:authentication-manager>
 

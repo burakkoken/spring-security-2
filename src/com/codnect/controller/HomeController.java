@@ -37,4 +37,9 @@ public class HomeController {
         return "NotFoundPage";
     }
 
+    @RequestMapping(value = {"/settings"})
+    public String showSettingsPage(){
+        return "settings";
+    }
+
 }

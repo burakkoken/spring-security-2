@@ -43,4 +43,9 @@
         <error-code>404</error-code>
         <location>/notFoundPage</location>
     </error-page>
+
+    <!-- session config -->
+    <session-config>
+        <session-timeout>5</session-timeout>
+    </session-config>
 </web-app>
